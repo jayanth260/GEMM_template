@@ -89,7 +89,7 @@ int main(int argc, char *argv[]){
 		const std::size_t file_size = n * m;
 		const auto sol_data = reinterpret_cast<float*>(mmap(nullptr, file_size * sizeof(float), PROT_READ, MAP_PRIVATE, fd_sol, 0));
 		const auto student_data = reinterpret_cast<float*>(mmap(nullptr, file_size * sizeof(float), PROT_READ, MAP_PRIVATE, fd_student, 0));
-		constexpr const float error_threshold = 1e-2;
+		constexpr const float error_threshold = 1e-3;
 		std::uint32_t remaining = 0;
 		#ifdef __AVX512F__
 			const __m512 threshold_vec = _mm512_set1_ps(error_threshold);
